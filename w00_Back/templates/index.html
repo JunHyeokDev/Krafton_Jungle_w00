@@ -39,27 +39,18 @@
                 success: function (response) {
                     if (response['result'] == 'success') {
                         $.cookie('mytoken', response['token']);
-                        token = response['token']
-                        alert(token)
-                        
-                        $.ajax({
-                            url: '/upload', // 요청을 보낼 URL
-                            type: 'POST', // 또는 POST 등의 HTTP 메서드
-                            headers: {
-                                'Authorization': 'Bearer ' + token // 헤더에 토큰 추가
-                            },
-                            success: function (response) {
-                                // 요청 성공 시 처리
-                                console.log(response);
-                                // 다른 처리
-                            },
-                            error: function (xhr, status, error) {
-                                // 요청 실패 시 처리
-                                console.error(error);
-                            }
-                        });
-
-
+                        token = response['token'] //
+                        window.location.replace("/upload")
+                        // $.ajax({
+                        //     type: "POST",
+                        //     url: "/upload",
+                        //     headers: {
+                        //         "Authorization": "Bearer " + token
+                        //     },
+                        //     success: function (response) {
+                        //         // 처리 로직
+                        //     }
+                        // });
                     } else {
                         alert(response['msg'])
                     }
